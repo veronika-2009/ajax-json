@@ -1,7 +1,7 @@
   $(document).ready(function(){
 
   $.ajax ({
-    url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
+    url: "https://www.googleapis.com/books/v1/volumes?q=" ,
     dataType: "json",
 
     success: function(data){

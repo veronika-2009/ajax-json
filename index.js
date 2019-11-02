@@ -1,3 +1,4 @@
+
   $(document).ready(function(){
   	loadGood();
  // $.ajax ({
@@ -23,7 +24,7 @@
 });
 
   function loadGood(){
-$.getJSON('good.js', function(data){
+	let data = Cars
 	let out = '';
 	for (let key in data){
 		out+='<div class ="first-goods">';
@@ -33,9 +34,8 @@ $.getJSON('good.js', function(data){
 	}
 	$('#product').html(out);
 	$('imageUrl').on('click', addToCart);
-
-});
 }
+
 function addToCart(){
 	//добавление в корзину
 }

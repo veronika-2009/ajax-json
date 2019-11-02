@@ -1,4 +1,5 @@
-[{"id":1,
+const Cars =
+	[{"id":1,
   	"name":"1967 Mercedes Benz 250 SL",
   	"specs":null,
   	"imageUrl":"https://paramountpicturecars.com/wp-content/uploads/2019/11/1967-Mercedes-Benz-250-SL-800x490.jpg",
@@ -119,3 +120,5 @@
   	"imageUrl":"https://paramountpicturecars.com/wp-content/uploads/2019/10/Ford-Fairlane-59-1.jpg",
   	"carUrl":"https://paramountpicturecars.com/inventory/1959-ford-fairlane-hard-top-retractable/"
   }]
+
+  

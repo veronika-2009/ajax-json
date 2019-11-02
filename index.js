@@ -1,6 +1,7 @@
-
+let myCars = {}; //корзина
   $(document).ready(function(){
   	loadGood();
+  	checkCarts();
  // $.ajax ({
    // url: "https://www.googleapis.com/books/v1/volumes?q=" ,
     //dataType: "json",
@@ -26,19 +27,43 @@
   function loadGood(){
 	let data = Cars
 	let out = '';
-	for (let key in data){
-		out+='<div class ="first-goods">';
-		out +='<h4>' +data[key]['name']+'</h4>';
-		out +='<img src="'+data[key].imageUrl+'">';
-		out += '</div>';
-	}
+		for (let key in data){
+			out+='<div class ="first-goods">';
+			out +='<h4 class="name">' +data[key]['name']+'</h4>';
+			out +='<img data-id="'+key+'" class="oldCars" src="'+data[key].imageUrl+'">';
+			out += '</div>';
+		}
 	$('#product').html(out);
-	$('imageUrl').on('click', addToCart);
+	$('.oldCars').on('click', addToCart);
 }
 
 function addToCart(){
 	//добавление в корзину
+	let id = $(this).attr('data-id');
+	if (myCars[id]!=undefined) {
+		myCars[id]++;
+	}else{
+		myCars[id] = 1;
+	}
+	localStorage.setItem('myCars', JSON.stringify(myCars) );
+	showShoppingBasket();
+
 }
+
+function checkCarts(){
+	 if (localStorage.getItem('myCars')!=null) {
+	 	myCars = JSON.parse(localStorage.getItem('myCars'));
+	 }
+}
+function showShoppingBasket(){
+	//содержимое корзины
+	let out = '';
+	for (let w in myCars){
+		out +=w + '---' +myCars[w]+'<br>';
+	}
+	$('#shoppingBasket').html(out);
+}
+   
 
 
 

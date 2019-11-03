@@ -1,23 +1,22 @@
 let myCars = {}; //корзина
   $(document).ready(function(){
   	loadGood();
-  	checkCarts();
+  	//checkCarts();
  // $.ajax ({
-   // url: "https://www.googleapis.com/books/v1/volumes?q=" ,
-    //dataType: "json",
+ //   url: "http://157.245.226.94:8080/cars-v1_0/get-all" ,
+ //   dataType: "json",
 
-//    success: function(data){
-  //    var innerHTML = "";
-  //    for(var i=0; i < data.items.length; i++){
+ // success: function(data){
+ //     var innerHTML = "";
+ //     for(var i=0; i < data.items.length; i++){
         
 //		if(data.items[i].volumeInfo.title && data.items[i].volumeInfo.imageLinks &&
 //		 data.items[i].volumeInfo.imageLinks.smallThumbnail){
 //		innerHTML += "<span class='col-md-4' title='>" + data.items[i].volumeInfo.title + "'</span>" +
 //         "<img class='col-md-4' src='" + data.items[i].volumeInfo.imageLinks.smallThumbnail + "'>";
 //		}
-//    }
+//   }
 //	$('#product').html(innerHTML);
-      
 //    },
 //    type: 'GET'
 //  });
@@ -28,42 +27,21 @@ let myCars = {}; //корзина
 	let data = Cars
 	let out = '';
 		for (let key in data){
-			out+='<div class ="first-goods">';
+			out +='<div class ="first-goods">';
 			out +='<h4 class="name">' +data[key]['name']+'</h4>';
-			out +='<img data-id="'+key+'" class="oldCars" src="'+data[key].imageUrl+'">';
+			out +='<img class="oldCars" src="'+data[key].imageUrl+'">';
+			out +='<button class="buttonBuy" data-id="'+key+'">Add to Shopping Cart</button>';
 			out += '</div>';
 		}
 	$('#product').html(out);
-	$('.oldCars').on('click', addToCart);
+	$('button.buttonBuy').on('click', addToCart);
 }
-
 function addToCart(){
-	//добавление в корзину
 	let id = $(this).attr('data-id');
-	if (myCars[id]!=undefined) {
-		myCars[id]++;
-	}else{
-		myCars[id] = 1;
-	}
-	localStorage.setItem('myCars', JSON.stringify(myCars) );
-	showShoppingBasket();
+	let result = serviceStore.putProduct(id);
+	
 
 }
-
-function checkCarts(){
-	 if (localStorage.getItem('myCars')!=null) {
-	 	myCars = JSON.parse(localStorage.getItem('myCars'));
-	 }
-}
-function showShoppingBasket(){
-	//содержимое корзины
-	let out = '';
-	for (let w in myCars){
-		out +=w + '---' +myCars[w]+'<br>';
-	}
-	$('#shoppingBasket').html(out);
-}
-   
 
 
 

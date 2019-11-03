@@ -1,3 +1,11 @@
+body{
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: flex-start;
+	align-items: flex-start;
+}
+
+
 .first-goods{
 	width: 300px;
 	height: 280px;
@@ -12,4 +20,24 @@
 .oldCars{
 	width: 300px;
 	height: 180px;
+}
+button{
+	margin-left: 26%;
+	margin-top: 2%;
+	font-family: Arial, sans-serif;
+	
+}
+
+.containerCounter{
+	flex-shrink: 0;
+	width: 80px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	background-image: url(img/shopping-cart.png);
+	background-repeat: no-repeat;
+	font-weight: bold;
+	cursor: pointer;
 }

@@ -30,18 +30,31 @@ let myCars = {}; //корзина
 			out +='<div class ="first-goods">';
 			out +='<h4 class="name">' +data[key]['name']+'</h4>';
 			out +='<img class="oldCars" src="'+data[key].imageUrl+'">';
-			out +='<button class="buttonBuy" data-id="'+key+'">Add to Shopping Cart</button>';
+			out +='<button class="buttonBuy" data-id="'+data[key]['name']+'">Add to Shopping Cart</button>';
 			out += '</div>';
 		}
 	$('#product').html(out);
 	$('button.buttonBuy').on('click', addToCart);
 }
 function addToCart(){
-	let id = $(this).attr('data-id');
-	let result = serviceStore.putProduct(id);
-	
-
+	let name = $(this).attr('data-id');
+	let result = serviceStore.putProduct(name);
 }
+
+$('.containerCounter').on('click', buy);
+	function buy(){
+	swal('name');	
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 

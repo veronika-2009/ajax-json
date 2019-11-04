@@ -15,11 +15,11 @@ class ServiceStore{
 	}
 
 
-	putProduct(id){
+	putProduct(name){
 		let products = this.getProducts();
-		let index = products.indexOf(id);
+		let index = products.indexOf(name);
 		if (index === -1) {
-			products.push(id);
+			products.push(name);
 		} else {
 			products.splice(index, 1);
 		}
